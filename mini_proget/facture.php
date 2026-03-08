@@ -1,32 +1,49 @@
 <?php
-session_start();
+session_start(); 
+// Démarre la session pour pouvoir utiliser $_SESSION['panier']
 
 if(isset($_SESSION['panier']) && !empty($_SESSION['panier'])){
+    // Vérifie si le panier existe et qu'il contient au moins un produit
 
-$total_global = 0;
+    $total_global = 0; 
+    // Initialise le total global à 0 avant de calculer la somme de tous les articles
 
-echo "<table border='1'>";
-echo "<tr><th>produit</th><th>quantite</th><th>prix unitaire</th><th>total</th></tr>";
+    echo "<table border='1'>";
+    echo "<tr><th>produit</th><th>quantite</th><th>prix unitaire</th><th>total</th></tr>";
+    // Création de l'en-tête du tableau HTML pour afficher le panier
 
-foreach($_SESSION['panier'] as $item){
+    foreach($_SESSION['panier'] as $item){
+        // Parcourt chaque produit du panier
 
-$total_ligne = $item['qte'] * $item['prix'];
-$total_global += $total_ligne;
+        $total_ligne = $item['qte'] * $item['prix']; 
+        // Calcule le total pour ce produit (quantité * prix unitaire)
 
-echo "<tr>";
-echo "<td>".$item['nom']."</td>";
-echo "<td>".$item['qte']."</td>";
-echo "<td>".$item['prix']."</td>";
-echo "<td>".$total_ligne."</td>";
-echo "</tr>";
-}
+        $total_global += $total_ligne; 
+        // Ajoute le total de ce produit au total global
 
-echo "</table>";
+        echo "<tr>";
+        echo "<td>".$item['nom']."</td>"; 
+        // Affiche le nom du produit
+        echo "<td>".$item['qte']."</td>"; 
+        // Affiche la quantité commandée
+        echo "<td>".$item['prix']."</td>"; 
+        // Affiche le prix unitaire
+        echo "<td>".$total_ligne."</td>"; 
+        // Affiche le total pour ce produit
+        echo "</tr>";
+    }
 
-echo "montant total a payer : $total_global";
+    echo "</table>";
+    // Ferme le tableau HTML
 
-}else{
-    echo "panier vide";
-echo "<a href='index.php'>retourner a la boutique</a>";
+    echo "montant total a payer : $total_global"; 
+    // Affiche le montant total à payer pour tous les produits du panier
+
+} else {
+    // Si le panier est vide ou n'existe pas
+    echo "panier vide"; 
+    // Message pour indiquer que le panier est vide
+    echo "<a href='index.php'>retourner a la boutique</a>"; 
+    // Lien pour retourner à la page principale de la boutique
 }
 ?>
