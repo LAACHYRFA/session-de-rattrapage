@@ -47,3 +47,31 @@ if(isset($_SESSION['panier']) && !empty($_SESSION['panier'])){
     // Lien pour retourner à la page principale de la boutique
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+        <style>body{
+            background: #c5e7e7;;
+            padding: 40px;
+        }
+        select,input,button{
+padding:6px;
+margin:5px;
+}
+
+table{
+border-collapse:collapse;
+width:100%;
+}
+button:hover{
+background:#2980b9;
+}
+</style> 
+</head>
+<body>
+ 
+</body>
+</html>
