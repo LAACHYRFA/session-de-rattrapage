@@ -2,7 +2,7 @@
 session_start(); 
 // Démarre la session pour pouvoir utiliser $_SESSION['panier']
 
-if(isset($_SESSION['panier']) && !empty($_SESSION['panier'])){
+if(isset($_SESSION['panier']) || !empty($_SESSION['panier'])){
     // Vérifie si le panier existe et qu'il contient au moins un produit
 
     $total_global = 0; 
@@ -75,3 +75,4 @@ background:#2980b9;
  
 </body>
 </html>
+
